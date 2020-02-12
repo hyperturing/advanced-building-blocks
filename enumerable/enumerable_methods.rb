@@ -1,6 +1,6 @@
 module Enumerable
-    require './array.rb'
-    require './hash.rb'
+    require './enumerable/array.rb'
+    require './enumerable/hash.rb'
 
     def my_each
         enumerated_object = self.to_enum
@@ -10,6 +10,8 @@ module Enumerable
                 yield(next_value)
             rescue StopIteration
                 return self
+            rescue LocalJumpError
+                return enumerated_object
             end
         end
     end
@@ -37,6 +39,8 @@ module Enumerable
                 found_values.select_value(next_value, yield(*next_value))
             rescue StopIteration
                 return found_values
+            rescue LocalJumpError
+                return enumerated_object
             end
         end
     end
@@ -84,3 +88,4 @@ module Enumerable
         return array.inject{|result, value| result*value}
     end
 end
+

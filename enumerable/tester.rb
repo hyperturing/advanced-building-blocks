@@ -1,5 +1,5 @@
 # TEST CODE FOR ENUMERABLE METHODS BELOW
-require './enumerable_methods.rb'
+require './enumerable/enumerable_methods.rb'
 
 array1 = [1,2,3,4,2,5,2]
 array2 = [2,2,2,2,2,2]
@@ -77,3 +77,6 @@ map_proc = Proc.new{|value| value * 2 }
 puts array1.my_map(map_proc)
 puts "Multiplying #{array1} by 2 using a proc and a block"
 puts array1.my_map(map_proc){|value| value * 3}
+
+puts "Selecting values in #{array1} by index:"
+#puts array1.my_select.with_index{|value, index| index.even?}
